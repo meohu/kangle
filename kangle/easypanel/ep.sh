@@ -5,7 +5,7 @@ EASYPANEL_VERSION="2.6.22"
 PUREFTP_VERSION="1.0.36"
 PREFIX="/vhs/kangle"
 CONFIG_FILES="/ext/tpl_php52/php-templete.ini"
-DOWNLOAD_BASE_URL="http://github.itzmx.com/1265578519/kangle/master/kangle";
+DOWNLOAD_BASE_URL="https://raw.githubusercontent.com/meohu/kangle/master/kangle";
 restore_config()
 {
         for p in $CONFIG_FILES; do
@@ -361,14 +361,12 @@ if [ ! -f /etc/php.d/ioncube.ini ] ; then
 	\cp /vhs/kangle/bin/ioncube.ini /etc/php.d/ioncube.ini
 fi
 wget  http://localhost:3312/upgrade.php -O /dev/null -q
-rm -rf /vhs/kangle/www/index.html
-wget http://github.itzmx.com/1265578519/kangle/master/easypanel/index.html -O /vhs/kangle/www/index.html
 rm -rf /vhs/kangle/nodewww/webftp/vhost/view/default/kfinfo.html
-wget http://github.itzmx.com/1265578519/kangle/master/easypanel/kfinfo.html -O /vhs/kangle/nodewww/webftp/vhost/view/default/kfinfo.html
+wget https://raw.githubusercontent.com/meohu/kangle/master/easypanel/kfinfo.html -O /vhs/kangle/nodewww/webftp/vhost/view/default/kfinfo.html
 rm -rf /vhs/kangle/nodewww/dbadmin/mysql/main.php
-wget http://github.itzmx.com/1265578519/kangle/master/easypanel/main.php -O /vhs/kangle/nodewww/dbadmin/mysql/main.php
+wget https://raw.githubusercontent.com/meohu/kangle/master/easypanel/main.php -O /vhs/kangle/nodewww/dbadmin/mysql/main.php
 rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/common/product.html
-wget http://github.itzmx.com/1265578519/kangle/master/easypanel/product.html -O /vhs/kangle/nodewww/webftp/admin/view/default/common/product.html
+wget https://raw.githubusercontent.com/meohu/kangle/master/easypanel/product.html -O /vhs/kangle/nodewww/webftp/admin/view/default/common/product.html
 $PREFIX/bin/kangle -q
 killall -9 kangle
 sleep 3
