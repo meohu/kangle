@@ -12,7 +12,7 @@ fi
 if test `arch` = "x86_64"; then
         ARCH="$ARCH-x64"
 fi
-URL="http://github.itzmx.com/1265578519/kangle/master/ent/kangle-ent-$VERSION$ARCH.tar.gz"
+URL="https://raw.githubusercontent.com/meohu/kangle/master/ent/kangle-ent-$VERSION$ARCH.tar.gz"
 wget $URL -O kangle.tar.gz
 tar xzf kangle.tar.gz
 cd kangle
@@ -20,7 +20,7 @@ $PREFIX/bin/kangle -q
 killall -9 kangle
 sleep 3
 mkdir -p $PREFIX
-wget http://github.itzmx.com/1265578519/kangle/master/ent/license/Ultimate/license.txt -O $PREFIX/license.txt
+wget https://raw.githubusercontent.com/meohu/kangle/master/ent/license/Ultimate/license.txt -O $PREFIX/license.txt
 ./install.sh $PREFIX
 $PREFIX/bin/kangle
 echo "/vhs/kangle/bin/kangle" >> /etc/rc.d/rc.local
@@ -32,7 +32,7 @@ echo "/vhs/kangle/bin/kangle" >> /etc/rc.d/rc.local
 /sbin/iptables -I INPUT -p tcp --dport 21 -j ACCEPT
 /etc/rc.d/init.d/iptables save
 rm -rf $PREFIX/www/index.html
-wget http://github.itzmx.com/1265578519/kangle/master/easypanel/index.html -O $PREFIX/www/index.html
+wget https://raw.githubusercontent.com/meohu/kangle/master/master/easypanel/index.html -O $PREFIX/www/index.html
 $PREFIX/bin/kangle -q
 killall -9 kangle
 sleep 3
