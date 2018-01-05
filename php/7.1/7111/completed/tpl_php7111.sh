@@ -3,7 +3,7 @@ yum -y install bzip2-devel libxml2-devel curl-devel db4-devel libjpeg-devel libp
 yum -y install mhash-devel openssl-devel
 yum -y install libtool-ltdl libtool-ltdl-devel
 PREFIX="/vhs/kangle/ext"
-wget -c https://raw.githubusercontent.com/meohu/kangle/master/master/php/7.1/7111/completed/tpl_php7111.tar.gz -O tpl_php7111.tar.gz
+wget -c https://raw.githubusercontent.com/moehu/kangle/master/master/php/7.1/7111/completed/tpl_php7111.tar.gz -O tpl_php7111.tar.gz
 tar xzf tpl_php7111.tar.gz
 mv tpl_php7111 $PREFIX
 rm -rf /tmp/*
