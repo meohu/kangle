@@ -1,0 +1,39 @@
+#!/bin/bash
+VERSION="3.5.8"
+if test $# != 1;then
+        echo "Usage: $0 dir"
+        exit 1;
+fi
+PREFIX=$1
+ARCH="-6"
+if test `ldd --version|head -1|awk '{print $NF;}'` = "2.5" ; then
+        ARCH="-5"
+fi
+if test `arch` = "x86_64"; then
+        ARCH="$ARCH-x64"
+fi
+URL="https://raw.githubusercontent.com/meohu/kangle/master/ent/kangle-ent-$VERSION$ARCH.tar.gz"
+wget $URL -O kangle.tar.gz
+tar xzf kangle.tar.gz
+cd kangle
+$PREFIX/bin/kangle -q
+killall -9 kangle
+sleep 3
+mkdir -p $PREFIX
+wget https://raw.githubusercontent.com/meohu/kangle/master/ent/license/Ultimate/license.txt -O $PREFIX/license.txt
+./install.sh $PREFIX
+$PREFIX/bin/kangle
+echo "/vhs/kangle/bin/kangle" >> /etc/rc.d/rc.local
+/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+/sbin/iptables -I INPUT -p tcp --dport 443 -j ACCEPT
+/sbin/iptables -I INPUT -p tcp --dport 3311 -j ACCEPT
+/sbin/iptables -I INPUT -p tcp --dport 3312 -j ACCEPT
+/sbin/iptables -I INPUT -p tcp --dport 3313 -j ACCEPT
+/sbin/iptables -I INPUT -p tcp --dport 21 -j ACCEPT
+/etc/rc.d/init.d/iptables save
+rm -rf $PREFIX/www/index.html
+wget https://raw.githubusercontent.com/meohu/kangle/master/master/easypanel/index.html -O $PREFIX/www/index.html
+$PREFIX/bin/kangle -q
+killall -9 kangle
+sleep 3
+$PREFIX/bin/kangle
